@@ -28,3 +28,4 @@ function(cprepo_add_exercise relative_dir stem)
 endfunction()
 
 cprepo_add_exercise(data_structures/fenwick_tree/classic fenwick_tree-classic)
+cprepo_add_exercise(data_structures/fenwick_tree/2d fenwick_tree-2d)
