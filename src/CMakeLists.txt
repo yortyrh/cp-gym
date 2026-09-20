@@ -29,3 +29,4 @@ endfunction()
 
 cprepo_add_exercise(data_structures/fenwick_tree/classic fenwick_tree-classic)
 cprepo_add_exercise(data_structures/fenwick_tree/2d fenwick_tree-2d)
+cprepo_add_exercise(data_structures/fenwick_tree/range_update_point_query fenwick_tree-range_update_point_query)
