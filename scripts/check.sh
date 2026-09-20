@@ -65,14 +65,16 @@ fi
 in_file="${in_files[0]}"
 stem="$(basename "$in_file" .in)"
 out_file="$exercise_dir/$stem.out"
+build_dir="${CPREPO_BUILD_DIR:-$root/build/dev}"
+
 if [[ "$use_solution" -eq 1 ]]; then
     src_file="$exercise_dir/$stem.cpp"
     target="$stem-solution"
-    bin="$root/build/dev/exercises/$stem-solution"
+    bin="$build_dir/exercises/$stem-solution"
 else
     src_file="$exercise_dir/$stem.student.cpp"
     target="$stem-student"
-    bin="$root/build/dev/exercises/$stem-student"
+    bin="$build_dir/exercises/$stem-student"
 fi
 
 if [[ ! -f "$src_file" ]]; then
@@ -84,11 +86,16 @@ if [[ ! -f "$out_file" ]]; then
     exit 2
 fi
 
-if [[ ! -d "$root/build/dev" ]]; then
-    cmake --preset dev
+if [[ ! -f "$build_dir/CMakeCache.txt" ]]; then
+    if [[ "$build_dir" == "$root/build/dev" ]]; then
+        cmake --preset dev
+    else
+        echo "error: missing CMakeCache.txt in $build_dir" >&2
+        exit 2
+    fi
 fi
 
-cmake --build --preset dev --target "$target"
+cmake --build "$build_dir" --target "$target"
 
 got="$(mktemp)"
 trap 'rm -f "$got"' EXIT

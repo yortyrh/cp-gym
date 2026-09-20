@@ -22,7 +22,7 @@ The first line contains two integers $n$ and $q$ ($1 \le n, q \le 2 \cdot 10^5$)
 
 The second line contains $n$ integers $a_1, a_2, \ldots, a_n$ ($|a_i| \le 10^9$).
 
-Each of the next $q$ lines contains one query. For type 1, $1 \le l \le r \le n$ and $|v| \le 10^9$. For type 2, $1 \le l \le r \le n$.
+Each of the next $q$ lines contains one query. For type 1, $1 \le l \le r \le n$ and $|v| \le 10^9$. For type 2, $1 \le l \le r \le n$. Every answer fits in a signed 64-bit integer.
 
 ## Output
 

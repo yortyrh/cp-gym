@@ -14,6 +14,14 @@ project(
   LANGUAGES CXX
 )
 
+if(NOT CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  message(
+    WARNING
+    "bits/stdc++.h exercises need GNU g++. "
+    "macOS /usr/bin/g++ is AppleClang, not GCC."
+  )
+endif()
+
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(CTest)
@@ -53,6 +61,6 @@ endif()
 
 add_subdirectory(src)
 
-if(BUILD_TESTING)
+if(BUILD_TESTING AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/CMakeLists.txt")
   add_subdirectory(tests)
 endif()

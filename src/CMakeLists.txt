@@ -4,6 +4,8 @@ function(cprepo_apply_exercise_flags target)
     ${target}
     PRIVATE
       $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:${CPREPO_WARNING_FLAGS} -O2>
+      $<$<CXX_COMPILER_ID:Clang,AppleClang>:-Wno-keyword-macro>
+      $<$<CXX_COMPILER_ID:Clang,AppleClang>:-Wno-sign-conversion>
   )
   if(CPREPO_ENABLE_SANITIZERS)
     target_compile_options(${target} PRIVATE -fsanitize=address,undefined -fno-omit-frame-pointer)
@@ -23,6 +25,10 @@ function(cprepo_add_exercise relative_dir stem)
       NAME ${stem}-solution
       COMMAND "${CMAKE_SOURCE_DIR}/scripts/check.sh" "src/${relative_dir}" --solution
       WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    )
+    set_tests_properties(
+      ${stem}-solution
+      PROPERTIES ENVIRONMENT "CPREPO_BUILD_DIR=${CMAKE_BINARY_DIR}"
     )
   endif()
 endfunction()
