@@ -1,0 +1,64 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "dev",
+      "displayName": "Development (Ninja, C++23)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/dev",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "BUILD_TESTING": true,
+        "CPREPO_ENABLE_SANITIZERS": false
+      }
+    },
+    {
+      "name": "sanitizers",
+      "displayName": "Development with ASan and UBSan",
+      "inherits": "dev",
+      "binaryDir": "${sourceDir}/build/sanitizers",
+      "cacheVariables": {
+        "CPREPO_ENABLE_SANITIZERS": true
+      }
+    },
+    {
+      "name": "release",
+      "displayName": "Release (Ninja, C++23)",
+      "inherits": "dev",
+      "binaryDir": "${sourceDir}/build/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CPREPO_WARNINGS_AS_ERRORS": true
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "dev", "configurePreset": "dev" },
+    { "name": "sanitizers", "configurePreset": "sanitizers" },
+    { "name": "release", "configurePreset": "release" }
+  ],
+  "testPresets": [
+    {
+      "name": "dev",
+      "configurePreset": "dev",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "sanitizers",
+      "configurePreset": "sanitizers",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "release",
+      "configurePreset": "release",
+      "output": { "outputOnFailure": true }
+    }
+  ]
+}
+
