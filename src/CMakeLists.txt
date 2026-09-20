@@ -34,3 +34,4 @@ cprepo_add_exercise(data_structures/fenwick_tree/range_update_range_query fenwic
 cprepo_add_exercise(data_structures/fenwick_tree/count_inversions fenwick_tree-count_inversions)
 cprepo_add_exercise(data_structures/fenwick_tree/frequency_counting fenwick_tree-frequency_counting)
 cprepo_add_exercise(data_structures/fenwick_tree/dynamic fenwick_tree-dynamic)
+cprepo_add_exercise(dynamic_programming/coin_change_min coin_change_min)
