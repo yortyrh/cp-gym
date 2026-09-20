@@ -23,6 +23,8 @@ A student reads a Codeforces/Kattis-style statement, fills a guided stub, and ch
 | Language | English statements and stub comments; C++ identifiers in English |
 | Student vs solution | `<stem>.student.cpp` is the stub; `<stem>.cpp` is the reference |
 | FastIO | Student writes it. `cin`/`cout` only. No `scanf`/`printf` |
+| Contest prelude | Every exercise `.cpp` (stub and solution) starts with `#include<bits/stdc++.h>`, `using namespace std;`, and `#define int long long` |
+| Entry point | `signed main()` — never `int main()`, because `int` is `long long` |
 | Fenwick indexing | Always 1-based internally and in Fenwick statements. Ranges inclusive `[l, r]` |
 | Coin-change arrays | 0-based, as usual for DP |
 | Checker | `scripts/check.sh <dir>` builds via CMake preset `dev`, runs stdin/stdout, `diff -u` |
@@ -123,24 +125,42 @@ To run the reference solution instead:
 ```
 ```
 
-Fenwick constraints: `n, q ≤ 2 · 10^5` (or the 2D analogue) so a naive rebuild is the wrong approach. Coin-change: `n ≤ 100`, `amount ≤ 10^4`. Values fit in `int64_t` unless a problem states otherwise. Print `-1` when coin change is impossible.
+Fenwick constraints: `n, q ≤ 2 · 10^5` (or the 2D analogue) so a naive rebuild is the wrong approach. Coin-change: `n ≤ 100`, `amount ≤ 10^4`. Values fit in 64-bit integers (`int` after the macro). Print `-1` when coin change is impossible.
+
+## Contest prelude
+
+Every stub and every reference solution begins with exactly this block, then the FastIO / Technique / I/O comments (stub) or implementations (solution):
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+```
+
+Rules:
+
+- GNU g++ only (`bits/stdc++.h` is libstdc++). That matches compiler selection below.
+- After the macro, write `int` for 64-bit integers. Do not use `int64_t` or `long long` in exercise files.
+- Use `signed main()`. `int main()` is wrong: the macro would make `main` return `long long`.
+- `using namespace std;` applies. FastIO uses `ios_base`, `cin`, `cout` without `std::`.
+- Do not use `bits/stdc++.h` or `#define int` in remaining `include/cprepo/` headers. Those stay a typed library until migrated.
 
 ## Student stub
 
-The stub compiles. It contains no algorithm, no FastIO, and no input parsing. `main` only `return 0;`. Comments are English. Blocks appear in this order: FastIO, Technique, I/O.
+The stub compiles. The contest prelude is already present (student does not rewrite includes). It contains no algorithm, no FastIO, and no input parsing. `signed main` only `return 0;`. Comments are English. After the contest prelude, blocks appear in this order: FastIO, Technique, I/O.
 
 Fenwick classic stub (the other Fenwick stubs follow the same shape; only the Technique and I/O comments change):
 
 ```cpp
-#include <cstdint>
-#include <iostream>
-#include <vector>
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
 
 // === FastIO ===
 // Enable fast C++ I/O here:
-//   std::ios_base::sync_with_stdio(false);
-//   std::cin.tie(nullptr);
-//   std::cout.tie(nullptr);
+//   ios_base::sync_with_stdio(false);
+//   cin.tie(nullptr);
+//   cout.tie(nullptr);
 // Prefer a small FastIO struct constructed at startup. Do not use scanf/printf.
 
 // === Technique: Fenwick tree (point update, range query) ===
@@ -152,7 +172,7 @@ Fenwick classic stub (the other Fenwick stubs follow the same shape; only the Te
 //   range_sum(l, r) — sum of a[l] + ... + a[r] = prefix_sum(r) - prefix_sum(l - 1)
 // Do not rebuild prefix sums on every query. Do not use a segment tree for this exercise.
 
-int main() {
+signed main() {
     // === I/O ===
     // Read n, q and the initial array a[1..n] from stdin.
     // Build the Fenwick tree from the array.
@@ -169,15 +189,15 @@ The Technique block always names the required structure or DP and names the typi
 ```cpp
 struct FastIO {
     FastIO() {
-        std::ios_base::sync_with_stdio(false);
-        std::cin.tie(nullptr);
-        std::cout.tie(nullptr);
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
     }
 };
 static FastIO fastio;
 ```
 
-Reference `*.cpp` files are self-contained: FastIO, the technique, and I/O in one translation unit. They do not `#include` anything under `include/cprepo/`. They use `std::cin` / `std::cout`. They match the stub's include style (explicit standard headers, not `bits/stdc++.h`).
+Reference `*.cpp` files are self-contained: contest prelude, FastIO, the technique, and I/O in one translation unit. They do not `#include` anything under `include/cprepo/`. They use `cin` / `cout`.
 
 ## Pilot problems
 
