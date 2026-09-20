@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        env:
+          CXX: g++
+        run: cmake --preset dev
+      - name: Build
+        run: cmake --build --preset dev
+      - name: Test
+        run: ctest --preset dev
+      - name: Exercise solutions
+        run: |
+          ./scripts/check.sh src/data_structures/fenwick_tree/classic --solution
+          ./scripts/check.sh src/data_structures/fenwick_tree/2d --solution
+          ./scripts/check.sh src/data_structures/fenwick_tree/range_update_point_query --solution
+          ./scripts/check.sh src/data_structures/fenwick_tree/range_update_range_query --solution
+          ./scripts/check.sh src/data_structures/fenwick_tree/count_inversions --solution
+          ./scripts/check.sh src/data_structures/fenwick_tree/frequency_counting --solution
+          ./scripts/check.sh src/data_structures/fenwick_tree/dynamic --solution
+          ./scripts/check.sh src/dynamic_programming/coin_change_min --solution
