@@ -4,9 +4,11 @@ A C++23 practice repository inspired by the catalog in the
 [CP4 Free Source Code Project](https://github.com/stevenhalim/cpbook-code), by Steven Halim,
 Felix Halim, and Suhendry Effendy.
 
-The goal is not to preserve complete contest programs. Each header is one algorithm or data
-structure, documented at the top of the file, with a textbook-sized test. Delete the body,
-reimplement it, and run that test. Real problems stay on Kattis, LeetCode, and Codeforces.
+The goal is not to preserve complete contest programs. Migrated topics are judge-style
+exercises: read the statement, fill the student stub, and verify with `./scripts/check.sh`.
+Topics still under `include/` are one header per algorithm or data structure, with a Catch2
+test—delete the body, reimplement it, and run that test. Real problems stay on Kattis,
+LeetCode, and Codeforces.
 
 ## Requirements
 
@@ -59,8 +61,9 @@ docs/catalog.md           # CP4/cpbook-code chapter map, including cp-algorithms
 ```
 
 Migrated topics are judge-style exercises under `src/`. Unmigrated implementations are
-header-only and live in the `cprepo` namespace. Types are concrete (`int64_t`, `int`,
-`string`), ranges use `[begin, end)`, indices are zero-based, and graphs use vertices `0..n-1`.
+header-only and live in the `cprepo` namespace. For unmigrated headers, types are concrete
+(`int64_t`, `int`, `string`), ranges use `[begin, end)`, indices are zero-based, and graphs
+use vertices `0..n-1`.
 
 ## Practice workflow
 
