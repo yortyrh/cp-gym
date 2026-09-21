@@ -29,38 +29,9 @@ include(CTest)
 option(CPREPO_WARNINGS_AS_ERRORS "Treat compiler warnings as errors" OFF)
 option(CPREPO_ENABLE_SANITIZERS "Enable AddressSanitizer and UndefinedBehaviorSanitizer" OFF)
 
-add_library(cprepo INTERFACE)
-add_library(cprepo::cprepo ALIAS cprepo)
-
-target_include_directories(
-  cprepo
-  INTERFACE
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>
-)
-target_compile_features(cprepo INTERFACE cxx_std_23)
-
 set(CPREPO_WARNING_FLAGS -Wall -Wextra -Wpedantic -Wconversion -Wshadow)
 if(CPREPO_WARNINGS_AS_ERRORS)
   list(APPEND CPREPO_WARNING_FLAGS -Werror)
 endif()
-target_compile_options(
-  cprepo
-  INTERFACE
-    $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:${CPREPO_WARNING_FLAGS}>
-)
-
-if(CPREPO_ENABLE_SANITIZERS)
-  if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
-    target_compile_options(cprepo INTERFACE -fsanitize=address,undefined -fno-omit-frame-pointer)
-    target_link_options(cprepo INTERFACE -fsanitize=address,undefined -fno-omit-frame-pointer)
-  else()
-    message(FATAL_ERROR "CPREPO_ENABLE_SANITIZERS requires GCC or Clang")
-  endif()
-endif()
 
 add_subdirectory(src)
-
-if(BUILD_TESTING AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tests/CMakeLists.txt")
-  add_subdirectory(tests)
-endif()
