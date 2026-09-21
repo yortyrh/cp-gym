@@ -7,4 +7,6 @@ compile_commands.json
 *.gcda
 *.gcno
 *.profraw
+*.pdf
+.tmp-*/
 
