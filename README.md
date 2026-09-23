@@ -1,3 +1,5 @@
+![cp-gym](docs/assets/social-preview.png)
+
 # CP Repo Practice
 
 A C++23 **gym** for competitive-programming data structures and techniques.
