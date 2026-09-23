@@ -346,7 +346,6 @@ using namespace std;
 // Enable fast C++ I/O here:
 //   ios_base::sync_with_stdio(false);
 //   cin.tie(nullptr);
-//   cout.tie(nullptr);
 // Prefer a small FastIO struct constructed at startup. Do not use scanf/printf.
 
 // === Technique: Fenwick tree (point update, range query) ===
@@ -383,7 +382,6 @@ struct FastIO {
     FastIO() {
         ios_base::sync_with_stdio(false);
         cin.tie(nullptr);
-        cout.tie(nullptr);
     }
 };
 static FastIO fastio;
@@ -591,7 +589,6 @@ using namespace std;
 // Enable fast C++ I/O here:
 //   ios_base::sync_with_stdio(false);
 //   cin.tie(nullptr);
-//   cout.tie(nullptr);
 // Prefer a small FastIO struct constructed at startup. Do not use scanf/printf.
 
 // === Technique: 2D Fenwick tree (point update, rectangle query) ===
@@ -626,7 +623,6 @@ struct FastIO {
     FastIO() {
         ios_base::sync_with_stdio(false);
         cin.tie(nullptr);
-        cout.tie(nullptr);
     }
 };
 static FastIO fastio;
@@ -833,7 +829,6 @@ using namespace std;
 // Enable fast C++ I/O here:
 //   ios_base::sync_with_stdio(false);
 //   cin.tie(nullptr);
-//   cout.tie(nullptr);
 // Prefer a small FastIO struct constructed at startup. Do not use scanf/printf.
 
 // === Technique: Fenwick tree as a difference array (range update, point query) ===
@@ -865,7 +860,6 @@ struct FastIO {
     FastIO() {
         ios_base::sync_with_stdio(false);
         cin.tie(nullptr);
-        cout.tie(nullptr);
     }
 };
 static FastIO fastio;
@@ -1058,7 +1052,6 @@ using namespace std;
 // Enable fast C++ I/O here:
 //   ios_base::sync_with_stdio(false);
 //   cin.tie(nullptr);
-//   cout.tie(nullptr);
 // Prefer a small FastIO struct constructed at startup. Do not use scanf/printf.
 
 // === Technique: two Fenwick trees (range update, range query) ===
@@ -1091,7 +1084,6 @@ struct FastIO {
     FastIO() {
         ios_base::sync_with_stdio(false);
         cin.tie(nullptr);
-        cout.tie(nullptr);
     }
 };
 static FastIO fastio;
@@ -1294,7 +1286,6 @@ using namespace std;
 // Enable fast C++ I/O here:
 //   ios_base::sync_with_stdio(false);
 //   cin.tie(nullptr);
-//   cout.tie(nullptr);
 // Prefer a small FastIO struct constructed at startup. Do not use scanf/printf.
 
 // === Technique: Fenwick frequency tree plus coordinate compression ===
@@ -1322,7 +1313,6 @@ struct FastIO {
     FastIO() {
         ios_base::sync_with_stdio(false);
         cin.tie(nullptr);
-        cout.tie(nullptr);
     }
 };
 static FastIO fastio;
@@ -1507,7 +1497,6 @@ using namespace std;
 // Enable fast C++ I/O here:
 //   ios_base::sync_with_stdio(false);
 //   cin.tie(nullptr);
-//   cout.tie(nullptr);
 // Prefer a small FastIO struct constructed at startup. Do not use scanf/printf.
 
 // === Technique: Fenwick tree as a frequency table on values 1..n ===
@@ -1540,7 +1529,6 @@ struct FastIO {
     FastIO() {
         ios_base::sync_with_stdio(false);
         cin.tie(nullptr);
-        cout.tie(nullptr);
     }
 };
 static FastIO fastio;
@@ -1730,7 +1718,6 @@ using namespace std;
 // Enable fast C++ I/O here:
 //   ios_base::sync_with_stdio(false);
 //   cin.tie(nullptr);
-//   cout.tie(nullptr);
 // Prefer a small FastIO struct constructed at startup. Do not use scanf/printf.
 
 // === Technique: Fenwick tree on a coordinate-compressed universe ===
@@ -1761,7 +1748,6 @@ struct FastIO {
     FastIO() {
         ios_base::sync_with_stdio(false);
         cin.tie(nullptr);
-        cout.tie(nullptr);
     }
 };
 static FastIO fastio;
@@ -1959,7 +1945,6 @@ using namespace std;
 // Enable fast C++ I/O here:
 //   ios_base::sync_with_stdio(false);
 //   cin.tie(nullptr);
-//   cout.tie(nullptr);
 // Prefer a small FastIO struct constructed at startup. Do not use scanf/printf.
 
 // === Technique: unbounded knapsack DP (minimum coins) ===
@@ -1986,7 +1971,6 @@ struct FastIO {
     FastIO() {
         ios_base::sync_with_stdio(false);
         cin.tie(nullptr);
-        cout.tie(nullptr);
     }
 };
 static FastIO fastio;

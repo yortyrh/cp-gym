@@ -6,7 +6,6 @@ using namespace std;
 // Enable fast C++ I/O here:
 //   ios_base::sync_with_stdio(false);
 //   cin.tie(nullptr);
-//   cout.tie(nullptr);
 // Prefer a small FastIO struct constructed at startup. Do not use scanf/printf.
 
 // === Technique: Knuth optimization (adjacent merge / optimal BST style) ===

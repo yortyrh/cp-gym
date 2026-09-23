@@ -160,7 +160,6 @@ using namespace std;
 // Enable fast C++ I/O here:
 //   ios_base::sync_with_stdio(false);
 //   cin.tie(nullptr);
-//   cout.tie(nullptr);
 // Prefer a small FastIO struct constructed at startup. Do not use scanf/printf.
 
 // === Technique: Fenwick tree (point update, range query) ===
@@ -191,7 +190,6 @@ struct FastIO {
     FastIO() {
         ios_base::sync_with_stdio(false);
         cin.tie(nullptr);
-        cout.tie(nullptr);
     }
 };
 static FastIO fastio;
